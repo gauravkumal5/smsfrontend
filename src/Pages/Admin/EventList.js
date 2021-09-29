@@ -130,6 +130,8 @@ const EventList = ({ events, func }) => {
             <td>{events.title}</td>
             <td>{events.startEventDate}</td>
             <td>{events.endEventDate}</td>
+            <td>{events.eventType}</td>
+
             <td>
                <OperationButton
                   color="#8b68ff"
@@ -171,7 +173,9 @@ const EventList = ({ events, func }) => {
                      <th>Title</th>
                      <th>Start Date</th>
                      <th>End Date</th>
+                     <th>Event Type</th>
                      <th>Operations</th>
+
                   </tr>
                </thead>
                <tbody>{renderEvents()}</tbody>

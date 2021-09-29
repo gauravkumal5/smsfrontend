@@ -191,7 +191,7 @@ const ClassTeacher = () => {
 
    return (
       <>
-         <Header title="Class Teacher" action="false" />
+         <Header title="Class Teacher"  />
          <SForm onSubmit={handleSubmit} className="animate__animated animate__fadeIn   ">
             <FormGroup>
                <div>

@@ -1,12 +1,18 @@
 import React from "react";
-import { HeaderContainer, ActionLink, ActionButton, ActionButtonContainer } from "./Header.element";
+import { HeaderContainer, ActionLink,DownloadButton, ActionButton, ActionButtonContainer } from "./Header.element";
 import AddIcon from "@material-ui/icons/Add";
+import DownloadIcon from '@material-ui/icons/CloudDownload';
+
 
 const Header = ({ title, show }) => {
    const customRouteAdd = () => {
       if (title === "Students") {
          return (
             <ActionButtonContainer>
+               <ActionLink>
+                  
+                     <span><i>&darr;</i></span>
+               </ActionLink>
                <ActionButton
                   onClick={() => {
                      show();
@@ -37,12 +43,13 @@ const Header = ({ title, show }) => {
                </ActionButton>
             </ActionButtonContainer>
          );
-      } else if (title === "ClassTeacher") {
+      } else if (title === "Class Teacher") {
          return (
-            <ActionLink to="/dashboard/addClassTeachers">
-               {" "}
-               <AddIcon />
-            </ActionLink>
+            <ActionLink>
+                  
+            <span><i>&darr;</i>
+            </span>
+      </ActionLink>
          );
       } else if (title === "Reports") {
          return (
