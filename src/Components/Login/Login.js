@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { LoginContainer, LoginForm, LoginFormGroup, LoginInput, LoginSubmit } from "./Login.element";
+import { store } from "react-notifications-component";
 
 const Login = () => {
    let history = useHistory();
@@ -38,9 +39,27 @@ const Login = () => {
 
       try {
          let res = await Axios.post(`http://sms.test/api/${userType}/login`, authInfo);
+         if(res.data.message=="Unauthorized"){
+            store.addNotification({
+               title: " Role not found",
+               message: "You are not a class teacher",
+               type: "warning",
+               insert: "top",
+               container: "top-center",
+               animationIn: ["animate__animated", "animate__slideInRight"],
+               animationOut: ["animate__animated", "animate__slideOutRight"],
+               dismiss: {
+                  duration: 3000,
+               },
+            });
+           return 0; 
+         } 
          localStorage.setItem("token", res.data.access_token);
          localStorage.setItem("usertype", userType);
          localStorage.setItem("id", res.data.user);
+
+        
+
          if (localStorage.getItem("token")) {
             if (userType === "admin") {
                history.push("/dashboard");
@@ -51,7 +70,19 @@ const Login = () => {
             return 0;
          }
       } catch {
-         alert("username or password wrong");
+        
+         store.addNotification({
+            title: " Wrong credentials",
+            message: "Please input correct username and password",
+            type: "warning",
+            insert: "top",
+            container: "top-center",
+            animationIn: ["animate__animated", "animate__slideInRight"],
+            animationOut: ["animate__animated", "animate__slideOutRight"],
+            dismiss: {
+               duration: 3000,
+            },
+         });
       }
    };
 

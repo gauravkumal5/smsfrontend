@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FormContainer, FormGroup, RadioBtn, RadioGroup, SForm, SInput, Submit } from "../TeacherStudent.element";
 import { store } from "react-notifications-component";
 
-const EditStudent = ({ id, show }) => {
+const EditStudent = ({ id, show,func }) => {
    const access_token = localStorage.getItem("token");
    const [studentInfo, setStudentInfo] = useState({
       name: "",
@@ -72,6 +72,7 @@ const EditStudent = ({ id, show }) => {
             });
          } else {
             show();
+            func();
             store.addNotification({
                title: "Updated",
                message: "Student details are updated",
@@ -133,7 +134,7 @@ const EditStudent = ({ id, show }) => {
                   />
                </FormGroup>
 
-               <FormGroup>
+               {/* <FormGroup>
                   <span> Password</span>
                   <SInput
                      type="password"
@@ -142,7 +143,7 @@ const EditStudent = ({ id, show }) => {
                      value={studentInfo.password}
                      required
                   />
-               </FormGroup>
+               </FormGroup> */}
                <FormGroup>
                   <span>Gender</span>
                   <RadioGroup>

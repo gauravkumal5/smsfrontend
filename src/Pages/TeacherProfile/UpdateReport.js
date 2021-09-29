@@ -14,9 +14,9 @@ import {
    AddButton,
 } from "./TeacherProfile.element";
 
-const UpdateReport = () => {
+const UpdateReport = ({id, show}) => {
    const access_token = localStorage.getItem("token");
-   const { id } = useParams();
+   // const { id } = useParams();
    const [report, setReport] = useState({
       user_id: "",
       term: "",
@@ -34,7 +34,25 @@ const UpdateReport = () => {
       present_days: "",
       teacher_comment: "",
    });
+   const [reports]= useState({
+      user_id: "",
+      term: "",
+      marks: [
+         {
+            id: Math.random(),
+            subject_name: "",
+            theory_full: "",
+            prac_full: "",
+            theory_marks: "",
+            prac_marks: "",
+         },
+      ],
+      school_days: "",
+      present_days: "",
+      teacher_comment: "",
+   });
    useEffect(async () => {
+      setReport(reports);
       Axios.get(`http://sms.test/api/getReport/${id}`, {
          headers: {
             Authorization: `bearer ${access_token}`,
@@ -43,7 +61,7 @@ const UpdateReport = () => {
          const result = res.data.data;
          setReport(result);
       });
-   }, []);
+   }, [id]);
    console.log(report);
    const handleChange = (e) => {
       if (["subject_name", "theory_full", "prac_full", "theory_marks", "prac_marks"].includes(e.target.name)) {

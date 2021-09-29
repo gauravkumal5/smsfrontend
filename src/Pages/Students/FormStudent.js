@@ -8,7 +8,6 @@ import {
    RadioBtn,
    RadioGroup,
    Submit,
-   SubmitContainer,
    SInput,
 } from "../TeacherStudent.element";
 import Moment from "moment";
@@ -16,12 +15,12 @@ import { store } from "react-notifications-component";
 
 const FormStudent = ({ func, setFilter }) => {
    const access_token = localStorage.getItem("token");
-   let history = useHistory();
+   
    const [studentInfo, setStudentInfo] = useState({
       name: "",
       roll_no: "",
       username: "",
-      password: "",
+      password: "pass123",
       gender: "",
       dob: "",
       address: "",
@@ -29,18 +28,24 @@ const FormStudent = ({ func, setFilter }) => {
       class: "",
    });
 
+   const {name, roll_no, username, password, gender, dob, address, contact }=studentInfo; 
+
+
+
    let date = new Date();
    date = Moment(date).format("YYYY-MM-DD");
+
    const handleChange = async (e) => {
       setStudentInfo({
          ...studentInfo,
          [e.target.name]: e.target.value,
       });
+
    };
+ 
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-
       try {
          const res = await Axios.post(`http://sms.test/api/admin/addStudent`, studentInfo, {
             headers: {
@@ -119,7 +124,7 @@ const FormStudent = ({ func, setFilter }) => {
                   name="username"
                   minLength="5"
                   onChange={handleChange}
-                  value={studentInfo.username}
+                  value={username}
                   required
                />
             </FormGroup>
@@ -128,6 +133,7 @@ const FormStudent = ({ func, setFilter }) => {
                <span> Password</span>
                <SInput type="password" name="password" onChange={handleChange} value={studentInfo.password} required />
             </FormGroup>
+            <p style={{fontSize:"10px", textAlign:"center",color:"green"}}>Password is pass123 by default</p>
             <FormGroup>
                <span>Gender</span>
                <RadioGroup>

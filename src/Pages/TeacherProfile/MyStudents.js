@@ -10,6 +10,7 @@ import axios from "axios";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import ViewReport from "./ViewReport";
+import UpdateReport from "./UpdateReport";
 
 const MyStudents = ({ students, func }) => {
    const reports = students;
@@ -48,6 +49,7 @@ const MyStudents = ({ students, func }) => {
                      <h1>Student Info</h1>
                      <ClearIcon style={{ fontSize: "3rem" }} onClick={show} />
                   </Clear>
+                  <UpdateReport id={id} show={show} />
                </BigModalContainer>
             </StyledModal>
          );

@@ -28,7 +28,8 @@ const Students = () => {
    };
 
    const setFilter = () => {
-      setStudentClass("All");
+      abs="All";
+      fetchStudents();
    };
 
    const fetchStudents = async () => {

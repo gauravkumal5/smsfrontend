@@ -116,6 +116,7 @@ const GenerateReport = () => {
       }
    };
    const fetchStudents = async () => {
+      console.log(id);
       await axios
          .get(`http://sms.test/api/getTeacherStudent/${id}`, {
             headers: {

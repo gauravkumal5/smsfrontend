@@ -56,7 +56,7 @@ export const ModalContainer = styled.div`
 export const BigModalContainer = styled.div`
    padding: 1rem;
    background-color: white;
-   width: 60%;
+   max-width: 75%;
    border-radius: 2rem;
    display: flex;
    flex-direction: column;

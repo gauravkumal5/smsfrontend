@@ -14,9 +14,7 @@ const Home = () => {
             <HomeShowCase color="#AC66F7 ">
                <h1>1</h1> Admin
             </HomeShowCase>
-            <HomeShowCase color="#951FFD ">
-               <h1>5</h1> Non-Teaching Staffs
-            </HomeShowCase>
+            
          </ShowCaseContainer>
       </>
    );

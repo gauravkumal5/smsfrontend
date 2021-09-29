@@ -129,6 +129,7 @@ const TeacherList = ({ teachers, func }) => {
       return teacherList.map((teachers, index) => (
          <tr key={index}>
             <td>{teachers.name}</td>
+            <td>{teachers.address}</td>
             <td>{teachers.contact}</td>
             <td>
                <OperationButton
@@ -169,6 +170,7 @@ const TeacherList = ({ teachers, func }) => {
                <thead>
                   <tr>
                      <th>Name</th>
+                     <th>Address</th>
                      <th>Contact</th>
                      <th>Operations</th>
                   </tr>

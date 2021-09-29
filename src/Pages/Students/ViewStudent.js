@@ -36,8 +36,7 @@ const ViewStudent = ({ id }) => {
                      <td>
                         <strong>Name</strong>
                      </td>
-                     {/* <td>{studentInfo.name}</td> */}
-                     <td>Dhan bahadur kumal fsdfsdfgsfd</td>
+                     <td>{studentInfo.name}</td>
                   </tr>
                   <tr>
                      <td>

@@ -25,6 +25,7 @@ const StudentList = ({ filter, func }) => {
       }
    };
 
+   console.log(studentList);
    const checkTitle = () => {
       if (opTitle === "view") {
          return (
@@ -45,9 +46,9 @@ const StudentList = ({ filter, func }) => {
                <ModalContainer>
                   <Clear color="#2E8B57">
                      <h1>Student Info</h1>
-                     <ClearIcon style={{ fontSize: "3rem" }} onClick={show} />
+                     <ClearIcon style={{ fontSize: "3rem" }} onClick={show}  />
                   </Clear>
-                  <EditStudent id={id} show={show} />
+                  <EditStudent id={id} show={show} func={func}/>
                </ModalContainer>
             </StyledModal>
          );
@@ -132,6 +133,10 @@ const StudentList = ({ filter, func }) => {
             <td>{students.roll_no}</td>
             <td>{students.name}</td>
             <td>{students.class}</td>
+            <td>{students.address}</td>
+            <td>{students.contact}</td>
+
+
             <td>
                <OperationButton
                   color="#8b68ff"
@@ -174,6 +179,8 @@ const StudentList = ({ filter, func }) => {
                      <th>Roll No</th>
                      <th>Name</th>
                      <th>Class</th>
+                     <th>Address</th>
+                     <th>Contact</th>
                      <th>Operations</th>
                   </tr>
                </thead>

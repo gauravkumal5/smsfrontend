@@ -79,7 +79,7 @@ const AddEvent = ({ func, filters }) => {
                   <Select name="eventType" value={eventInfo.eventType} onChange={handleChange} required>
                      <option value="">Select</option>
                      <option value="Notice">Notice</option>
-                     <option value="Interactive">Interactive</option>
+                     <option value="Participation">Participation</option>
                   </Select>
                </FormGroup>
                <FormGroup>
@@ -88,7 +88,7 @@ const AddEvent = ({ func, filters }) => {
                </FormGroup>
                <FormGroup>
                   <span> Event End Date</span>
-                  <SInput type="date" name="endEventDate" min={date} onChange={handleChange} />
+                  <SInput type="date" name="endEventDate" min={eventInfo.startEventDate} onChange={handleChange} />
                </FormGroup>
                <FormGroup>
                   <div>

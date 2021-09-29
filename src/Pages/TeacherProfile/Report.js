@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { useReactToPrint } from "react-to-print";
 import { OperationButton } from "../TeacherStudent.element";
 import { Link } from "react-router-dom";
-
+import PrintIcon from "@material-ui/icons/Print";
 import {
    AttendanceTable,
    GradeInfo,
@@ -209,16 +209,18 @@ const Report = ({ id, show }) => {
       } else if (report === "empty") {
          return (
             <>
-               <h1>Not Recent Report Found </h1>
+               <h1>No Recent Report Found </h1>
             </>
          );
       } else {
          return (
             <>
-               <button onClick={handlePrint}>Print</button>
-               <Link color="orange" to={`/teacher/updateReport/${report.id}`}>
+               <div style={{display: "flex", justifyContent:"end", marginRight:"1rem", fontSize:"1.5rem"}}>
+               <PrintIcon onClick={handlePrint}>Print</PrintIcon>
+               </div>
+               {/* <Link color="orange" to={`/teacher/updateReport/${report.id}`}>
                   Update
-               </Link>
+               </Link> */}
 
                <ReportViewContainer ref={componentRef}> {loadView()} </ReportViewContainer>
             </>

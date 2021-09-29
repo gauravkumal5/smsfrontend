@@ -10,7 +10,7 @@ const FormTeacher = ({ func }) => {
    const [teacherInfo, setTeacherInfo] = useState({
       name: "",
       username: "",
-      password: "",
+      password: "pass123",
       address: "",
       contact: "",
    });
@@ -84,10 +84,12 @@ const FormTeacher = ({ func }) => {
                <span> Username</span>
                <SInput type="text" name="username" value={teacherInfo.username} onChange={handleChange} required />
             </FormGroup>
+            
             <FormGroup>
                <span> Password</span>
                <SInput type="password" name="password" value={teacherInfo.password} onChange={handleChange} required />
             </FormGroup>
+            <p style={{fontSize:"10px", textAlign:"center",color:"green"}}>Password is pass123 by default</p>
             <FormGroup>
                <span> Address</span>
                <SInput type="text" name="address" value={teacherInfo.address} onChange={handleChange} required />
