@@ -2,7 +2,7 @@ import Axios from "axios";
 import React,{ useState, useEffect } from "react";
 import { FormContainer, SForm, FormGroup, SInput, Submit } from "../TeacherStudent.element";
 
-export const AdminProfileEdit = () => {
+export const TeacherProfileEdit = () => {
    const access_token = localStorage.getItem("token");
    const id = localStorage.getItem("id");
    const [name, setName] = useState("");
@@ -10,9 +10,9 @@ export const AdminProfileEdit = () => {
    const [password, setPassword] = useState("");
    const [reTypePassword, setReTypePassword] = useState("");
 
-   const admin = { name, username, password };
+   const teacher = { name, username, password };
    useEffect(() => {
-      Axios.get(`http://sms.test/api/admin/getAdmin/${id}`, {
+      Axios.get(`http://sms.test/api/getTeacher/${id}`, {
          headers: {
             Authorization: `bearer ${access_token}`,
          },
@@ -30,7 +30,7 @@ export const AdminProfileEdit = () => {
          alert("Both password should be same");
       } else {
          try {
-            const res = await Axios.put(`http://sms.test/api/admin/updateAdmin/${id}`, admin, {
+            const res = await Axios.put(`http://sms.test/api/updateTeacher/${id}`, teacher, {
                headers: {
                   Authorization: `bearer ${access_token}`,
                },
@@ -78,4 +78,4 @@ export const AdminProfileEdit = () => {
       </FormContainer>
    );
 };
-export default AdminProfileEdit;
+export default TeacherProfileEdit;

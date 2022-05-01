@@ -11,7 +11,7 @@ const ViewTeacher = ({ id }) => {
       setTeacher("");
 
       axios
-         .get(`http://sms.test/api/admin/getTeacher/${id}`, {
+         .get(`http://sms.test/api/getTeacher/${id}`, {
             headers: {
                Authorization: `bearer ${access_token}`,
             },

@@ -69,7 +69,7 @@ const Reports = () => {
                   <h1>Generate Report</h1>
                   <ClearIcon style={{ fontSize: "3rem" }} onClick={show} />
                </Clear>
-               <GenerateReport />
+               <GenerateReport func={fetchStudents}/>
             </BigModalContainer>
          </StyledModal>
       </>

@@ -5,16 +5,16 @@ import { FormContainer, SForm, SInput, FormGroup, Submit, Select } from "../Teac
 import { TextArea } from "../../Globalstyle";
 import Header from "../../Components/Header/Header";
 import Moment from "moment";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const AddEvent = ({ func, filters }) => {
    const access_token = localStorage.getItem("token");
    let history = useHistory();
    const [eventInfo, setEventInfo] = useState({
       title: "",
-      eventType: "",
+      eventType: "notice",
       startEventDate: "",
-      endEventDate: "",
+      endEventDate: " ",
       eventDescription: "",
    });
    let date = new Date();
@@ -30,9 +30,9 @@ const AddEvent = ({ func, filters }) => {
          });
          filters();
          func();
-         store.addNotification({
+         Store.addNotification({
             title: "Updated",
-            message: " Details are updated",
+            message: " Details are Stored",
             type: "success",
             insert: "top",
             container: "top-right",
@@ -43,9 +43,9 @@ const AddEvent = ({ func, filters }) => {
             },
          });
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
-            message: "Failed to update  details",
+            message: "Failed to Store  details",
             type: "danger",
             insert: "top",
             container: "top-right",
@@ -71,16 +71,6 @@ const AddEvent = ({ func, filters }) => {
                <FormGroup>
                   <span> Event Title</span>
                   <SInput type="text" name="title" value={eventInfo.title} onChange={handleChange} required />
-               </FormGroup>
-               <FormGroup>
-                  <div>
-                     <span> Event Type</span>
-                  </div>
-                  <Select name="eventType" value={eventInfo.eventType} onChange={handleChange} required>
-                     <option value="">Select</option>
-                     <option value="Notice">Notice</option>
-                     <option value="Participation">Participation</option>
-                  </Select>
                </FormGroup>
                <FormGroup>
                   <span> Event Start Date</span>

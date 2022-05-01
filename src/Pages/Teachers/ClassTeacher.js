@@ -10,7 +10,7 @@ import {
    SForm,
    Submit,
 } from "../TeacherStudent.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const ClassTeacher = () => {
    //getting TeachersList
@@ -72,7 +72,7 @@ const ClassTeacher = () => {
          });
 
          fetchTeacher();
-         store.addNotification({
+         Store.addNotification({
             title: "Stored",
             message: "Class Teacher added successfully",
             type: "success",
@@ -85,7 +85,7 @@ const ClassTeacher = () => {
             },
          });
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: "Failed to add a Class Teacher",
             type: "danger",
@@ -152,7 +152,7 @@ const ClassTeacher = () => {
                               },
                            })
                            .then((res) => {
-                              store.addNotification({
+                              Store.addNotification({
                                  title: "Deleted",
                                  message: ` Deleted successfully`,
                                  type: "danger",
@@ -167,7 +167,7 @@ const ClassTeacher = () => {
                            })
                            .then(fetchTeacher)
                            .catch((err) => {
-                              store.addNotification({
+                              Store.addNotification({
                                  title: "Failed",
                                  message: "Failed to delete ",
                                  type: "danger",

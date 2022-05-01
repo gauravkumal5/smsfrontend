@@ -6,8 +6,9 @@ import GetStudent from "./GetStudent";
 import { FormGroup, SInput, Select, Submit } from "../TeacherStudent.element";
 import MarksList from "./MarksList";
 import { CommonContainer, ReportForm, ReportFormGroup, ReportTable, AddButton } from "./TeacherProfile.element";
+import { Store } from "react-notifications-component";
 
-const GenerateReport = () => {
+const GenerateReport = ({func}) => {
    const access_token = localStorage.getItem("token");
    const id = localStorage.getItem("id");
    const [students, setStudents] = useState([]);
@@ -108,11 +109,36 @@ const GenerateReport = () => {
             },
          });
 
-         alert(res.data.data);
-         console.log(res.data);
-         // history.push("/dashboard/students");
-      } catch {
-         alert("failed to add ");
+         if (res.data.data === "Stored") {
+            func();
+            Store.addNotification({
+               title: "Success",
+               message: "Stored",
+               type: "success",
+               insert: "top",
+               container: "top-right",
+               animationIn: ["animate__animated", "animate__slideInRight"],
+               animationOut: ["animate__animated", "animate__slideOutRight"],
+               dismiss: {
+                  duration: 2500,
+               },
+            });
+         } 
+
+      }
+       catch {
+         Store.addNotification({
+            title: "Failed",
+            message: "Failed to store  details",
+            type: "danger",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__slideInRight"],
+            animationOut: ["animate__animated", "animate__slideOutRight"],
+            dismiss: {
+               duration: 2500,
+            },
+         });
       }
    };
    const fetchStudents = async () => {
@@ -155,15 +181,15 @@ const GenerateReport = () => {
                </ReportFormGroup>
                <ReportFormGroup>
                   <span>School Days</span>
-                  <SInput type="number" name="school_days" />
+                  <SInput type="number" name="school_days"  required/>
                </ReportFormGroup>
                <ReportFormGroup>
                   <span>Present Days</span>
-                  <SInput type="number" name="present_days" />
+                  <SInput type="number" name="present_days" required/>
                </ReportFormGroup>
                <ReportFormGroup>
                   <span>Teachers Comment</span>
-                  <TextArea cols="20" rows="3" name="teacher_comment" />
+                  <TextArea cols="20" rows="3" name="teacher_comment" required/>
                </ReportFormGroup>
                <ReportFormGroup>
                   <Submit type="submit" value="Submit" />

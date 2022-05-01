@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { DeleteButton, ListTable, ListTableContainer, OperationButton } from "../TeacherStudent.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
@@ -77,7 +77,7 @@ const EventList = ({ events, func }) => {
             },
          })
          .then((res) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Deleted",
                message: ` Details deleted successfully`,
                type: "danger",
@@ -91,7 +91,7 @@ const EventList = ({ events, func }) => {
             });
          })
          .catch((err) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Failed",
                message: `Failed  to delete`,
                type: "danger",
@@ -130,7 +130,7 @@ const EventList = ({ events, func }) => {
             <td>{events.title}</td>
             <td>{events.startEventDate}</td>
             <td>{events.endEventDate}</td>
-            <td>{events.eventType}</td>
+            {/* <td>{events.eventType}</td> */}
 
             <td>
                <OperationButton
@@ -173,7 +173,6 @@ const EventList = ({ events, func }) => {
                      <th>Title</th>
                      <th>Start Date</th>
                      <th>End Date</th>
-                     <th>Event Type</th>
                      <th>Operations</th>
 
                   </tr>

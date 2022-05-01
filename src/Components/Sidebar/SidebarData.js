@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import GroupIcon from "@material-ui/icons/Group";
 import HomeIcon from "@material-ui/icons/Home";
 import SubjectIcon from "@material-ui/icons/Subject";
@@ -24,11 +25,6 @@ export const SidebarAdminData = [
       title: "Class Teacher",
       path: "/dashboard/classTeachers",
       icon: <SupervisedUserCircleIcon />,
-   },
-   {
-      title: " Subject Teacher ",
-      path: "/dashboard/assignSubject",
-      icon: <SubjectIcon />,
    },
    {
       title: "Subjects",

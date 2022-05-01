@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { LoginContainer, LoginForm, LoginFormGroup, LoginInput, LoginSubmit } from "./Login.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const Login = () => {
    let history = useHistory();
@@ -40,7 +40,7 @@ const Login = () => {
       try {
          let res = await Axios.post(`http://sms.test/api/${userType}/login`, authInfo);
          if(res.data.message=="Unauthorized"){
-            store.addNotification({
+            Store.addNotification({
                title: " Role not found",
                message: "You are not a class teacher",
                type: "warning",
@@ -71,7 +71,7 @@ const Login = () => {
          }
       } catch {
         
-         store.addNotification({
+         Store.addNotification({
             title: " Wrong credentials",
             message: "Please input correct username and password",
             type: "warning",

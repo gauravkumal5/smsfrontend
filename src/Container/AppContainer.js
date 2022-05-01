@@ -1,4 +1,4 @@
-import { React } from "react";
+import React  from "react";
 import { SAppContainer, AppBody } from "../App.element";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import { Switch } from "react-router-dom";

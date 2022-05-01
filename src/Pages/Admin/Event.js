@@ -29,9 +29,10 @@ const Event = () => {
          abs = "getOngoing";
       } else if (filter === "past") {
          abs = "getPast";
-      } else if (filter === "recent") {
-         abs = "getRecent";
-      }
+      } 
+      // else if (filter === "recent") {
+      //    abs = "getRecent";
+      // }
    };
 
    const filters = () => {
@@ -90,7 +91,6 @@ const Event = () => {
                <option value="upcoming">Upcoming</option>
                <option value="ongoing">Ongoing</option>
                <option value="past">Past</option>
-               <option value="recent">Recent</option>
             </Select>
          </FilterContainer>
          <ListTableContainer>

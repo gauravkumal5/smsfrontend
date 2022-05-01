@@ -5,7 +5,7 @@ import { ActionButton, ActionButtonContainer } from "../../Components/Header/Hea
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import ClearIcon from "@material-ui/icons/Clear";
 import { BigModalContainer, Clear, DialogBox, StyledModal } from "../../App.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 import axios from "axios";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
@@ -16,8 +16,9 @@ const MyStudents = ({ students, func }) => {
    const reports = students;
    const access_token = localStorage.getItem("token");
    const [showModal, setShowModal] = useState(false);
-   const [id, setId] = useState(0);
+   const [id, setId] = useState(reports.id);
    const [opTitle, setOpTitle] = useState("");
+
 
    const show = () => {
       if (showModal === true) {
@@ -73,13 +74,13 @@ const MyStudents = ({ students, func }) => {
    };
    const deleteReport = () => {
       axios
-         .delete(`http://sms.test/api/admin/deleteReport/${id}`, {
+         .delete(`http://sms.test/api/teacher/deleteReport/${id}`, {
             headers: {
                Authorization: `bearer ${access_token}`,
             },
          })
          .then((res) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Deleted",
                message: ` Details deleted successfully`,
                type: "danger",
@@ -93,7 +94,7 @@ const MyStudents = ({ students, func }) => {
             });
          })
          .catch((err) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Failed",
                message: `Failed  to delete`,
                type: "danger",

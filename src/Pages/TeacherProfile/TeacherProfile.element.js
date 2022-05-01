@@ -114,7 +114,7 @@ export const ReportViewContainer = styled.div`
          font-family: sans-serif;
       }
       @page {
-         size: 210mm 297mm;
+         size: 200mm 290mm;
       }
 
       .view {

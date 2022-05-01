@@ -5,6 +5,8 @@ import Header from "../../Components/Header/Header";
 import { TextArea } from "../../Globalstyle";
 import { FormGroup, Select, SInput, Submit } from "../TeacherStudent.element";
 import UpdateMarksList from "./UpdateMarksList";
+import { Store } from "react-notifications-component";
+
 import {
    CommonContainer,
    ReportForm,
@@ -22,7 +24,7 @@ const UpdateReport = ({id, show}) => {
       term: "",
       marks: [
          {
-            id: Math.random(),
+            id:"",
             subject_name: "",
             theory_full: "",
             prac_full: "",
@@ -39,7 +41,7 @@ const UpdateReport = ({id, show}) => {
       term: "",
       marks: [
          {
-            id: Math.random(),
+            id:"",
             subject_name: "",
             theory_full: "",
             prac_full: "",
@@ -105,9 +107,20 @@ const UpdateReport = ({id, show}) => {
             },
          });
 
-         alert(res.data.data);
-         console.log(res.data);
-         // history.push("/dashboard/students");
+         if (res.data.data === "updated") {
+            Store.addNotification({
+               title: "updated",
+               message: "Stored",
+               type: "success",
+               insert: "top",
+               container: "top-right",
+               animationIn: ["animate__animated", "animate__slideInRight"],
+               animationOut: ["animate__animated", "animate__slideOutRight"],
+               dismiss: {
+                  duration: 2500,
+               },
+            });
+         } 
       } catch {
          alert("failed to update ");
       }
@@ -119,7 +132,6 @@ const UpdateReport = ({id, show}) => {
          <ReportForm onSubmit={handleSubmit} onChange={handleChange}>
             <CommonContainer>
                <ReportFormGroup>
-                  <span>Name</span>
                   <SInput name="user_id" defaultValue={report.user_id} />
                </ReportFormGroup>
                <ReportFormGroup>

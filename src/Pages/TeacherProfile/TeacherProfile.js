@@ -8,6 +8,7 @@ import { MainContainer } from "../../Container/MainContainer.element";
 import GenerateReport from "./GenerateReport";
 import Reports from "./Reports";
 import TeacherHome from "./TeacherHome";
+import TopBar from "./TopBar";
 import UpdateReport from "./UpdateReport";
 import ViewReport from "./ViewReport";
 
@@ -16,8 +17,7 @@ const TeacherProfile = () => {
       <SAppContainer>
          <AppBody>
             <MainContainer>
-               <Topbar />
-
+               <TopBar/>
                <Switch>
                   <TeacherPrivateRoute path="/teacher" exact={true} component={TeacherHome} />
                   <TeacherPrivateRoute path="/teacher/reports" component={Reports} />

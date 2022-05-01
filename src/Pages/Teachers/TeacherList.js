@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { OperationButton, ListTableContainer, ListTable, DeleteButton } from "../TeacherStudent.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 import { Clear, DialogBox, ModalContainer, StyledModal } from "../../App.element";
 import ViewTeacher from "./ViewTeacher";
 import EditTeacher from "./EditTeacher";
@@ -78,7 +78,7 @@ const TeacherList = ({ teachers, func }) => {
             },
          })
          .then((res) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Deleted",
                message: ` Details deleted successfully`,
                type: "danger",
@@ -92,7 +92,7 @@ const TeacherList = ({ teachers, func }) => {
             });
          })
          .catch((err) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Failed",
                message: `Failed  to delete`,
                type: "danger",

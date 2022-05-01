@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { React, useEffect, useState } from "react";
+import React,{  useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ViewDetailsContainer, ViewTable, DeleteButton } from "../TeacherStudent.element";
 
@@ -18,7 +18,7 @@ const ViewStudent = ({ id }) => {
    });
    useEffect(async () => {
       setStudentInfo("");
-      await Axios.get(`http://sms.test/api/admin/getStudent/${id}`, {
+      await Axios.get(`http://sms.test/api/user/getStudent/${id}`, {
          headers: {
             Authorization: `bearer ${access_token}`,
          },

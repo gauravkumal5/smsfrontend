@@ -1,10 +1,10 @@
 import Axios from "axios";
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { OperationButton, ListTableContainer, ListTable, DeleteButton } from "../TeacherStudent.element";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 import { Clear, DialogBox, ModalContainer, StyledModal } from "../../App.element";
 import ClearIcon from "@material-ui/icons/Clear";
 import ViewStudent from "./ViewStudent";
@@ -77,7 +77,7 @@ const StudentList = ({ filter, func }) => {
          },
       })
          .then((res) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Deleted",
                message: ` Details deleted successfully`,
                type: "danger",
@@ -91,7 +91,7 @@ const StudentList = ({ filter, func }) => {
             });
          })
          .catch((err) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Failed",
                message: `Failed  to delete`,
                type: "danger",

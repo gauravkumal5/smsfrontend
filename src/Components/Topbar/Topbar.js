@@ -7,7 +7,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Clear, DialogBox, ModalContainer, StyledModal } from "../../App.element";
 import ClearIcon from "@material-ui/icons/Clear";
 import AdminProfileEdit from "../../Pages/Admin/AdminProfileEdit";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const Topbar = () => {
    let history = useHistory();
@@ -18,7 +18,7 @@ const Topbar = () => {
       try {
          localStorage.clear();
          history.push("/login");
-         store.addNotification({
+         Store.addNotification({
             title: "Logout",
             message: ` Logged out successfully`,
             type: "info",
@@ -31,7 +31,7 @@ const Topbar = () => {
             },
          });
       } catch (err) {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: `Failed  to Log out`,
             type: "danger",
@@ -51,7 +51,7 @@ const Topbar = () => {
             <StyledModal showModal={showModal}>
                <ModalContainer>
                   <Clear color="#2E8B57">
-                     <h1>Update Admin Details</h1>
+                     <h1>Update Teacher Details</h1>
                      <ClearIcon style={{ fontSize: "3rem" }} onClick={show} />
                   </Clear>
                   <AdminProfileEdit />
@@ -86,6 +86,9 @@ const Topbar = () => {
    };
    return (
       <TopbarContainer>
+         <div>
+            <h1>JNM</h1>
+         </div>
          <div>
             <button
                style={{ backgroundColor: "inherit" }}

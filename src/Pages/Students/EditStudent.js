@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FormContainer, FormGroup, RadioBtn, RadioGroup, SForm, SInput, Submit } from "../TeacherStudent.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const EditStudent = ({ id, show,func }) => {
    const access_token = localStorage.getItem("token");
@@ -30,7 +30,7 @@ const EditStudent = ({ id, show,func }) => {
    useEffect(async () => {
       setStudentInfo(studentInfos);
       const fetchData = async () => {
-         await Axios.get(`http://sms.test/api/admin/getStudent/${id}`, {
+         await Axios.get(`http://sms.test/api/user/getStudent/${id}`, {
             headers: {
                Authorization: `bearer ${access_token}`,
             },
@@ -52,13 +52,13 @@ const EditStudent = ({ id, show,func }) => {
       e.preventDefault();
 
       try {
-         const res = await Axios.put(`http://sms.test/api/admin/updateStudent/${id}`, studentInfo, {
+         const res = await Axios.put(`http://sms.test/api/user/updateStudent/${id}`, studentInfo, {
             headers: {
                Authorization: `bearer ${access_token}`,
             },
          });
          if (res.data.data === "duplicate") {
-            store.addNotification({
+            Store.addNotification({
                title: "Duplicate",
                message: "Username already exist",
                type: "warning",
@@ -73,7 +73,7 @@ const EditStudent = ({ id, show,func }) => {
          } else {
             show();
             func();
-            store.addNotification({
+            Store.addNotification({
                title: "Updated",
                message: "Student details are updated",
                type: "success",
@@ -87,7 +87,7 @@ const EditStudent = ({ id, show,func }) => {
             });
          }
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: "Failed to update student details",
             type: "danger",

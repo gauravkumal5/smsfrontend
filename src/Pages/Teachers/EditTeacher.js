@@ -2,7 +2,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "../../Components/Header/Header";
 import { FormContainer, FormGroup, SForm, SInput, Submit } from "../TeacherStudent.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const EditTeacher = ({ id }) => {
    const access_token = localStorage.getItem("token");
@@ -23,7 +23,7 @@ const EditTeacher = ({ id }) => {
 
    useEffect(async () => {
       setTeacherInfo(teacherInfos);
-      Axios.get(`http://sms.test/api/admin/getTeacher/${id}`, {
+      Axios.get(`http://sms.test/api/getTeacher/${id}`, {
          headers: {
             Authorization: `bearer ${access_token}`,
          },
@@ -43,14 +43,14 @@ const EditTeacher = ({ id }) => {
       e.preventDefault();
 
       try {
-         const res = await Axios.put(`http://sms.test/api/admin/updateTeacher/${id}`, teacherInfo, {
+         const res = await Axios.put(`http://sms.test/api/updateTeacher/${id}`, teacherInfo, {
             headers: {
                Authorization: `bearer ${access_token}`,
             },
          });
 
          if (res.data.data === "duplicate") {
-            store.addNotification({
+            Store.addNotification({
                title: "Duplicate",
                message: "Username already exist",
                type: "warning",
@@ -63,7 +63,7 @@ const EditTeacher = ({ id }) => {
                },
             });
          } else {
-            store.addNotification({
+            Store.addNotification({
                title: "Updated",
                message: "Teachers details are updated",
                type: "success",
@@ -77,7 +77,7 @@ const EditTeacher = ({ id }) => {
             });
          }
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: "Failed to update student details",
             type: "danger",
@@ -104,7 +104,7 @@ const EditTeacher = ({ id }) => {
                   <span> Username</span>
                   <SInput type="text" name="username" onChange={handleChange} value={teacherInfo.username} required />
                </FormGroup>
-               <FormGroup>
+               {/* <FormGroup>
                   <span> Password</span>
                   <SInput
                      type="password"
@@ -113,7 +113,7 @@ const EditTeacher = ({ id }) => {
                      value={teacherInfo.password}
                      required
                   />
-               </FormGroup>
+               </FormGroup> */}
                <FormGroup>
                   <span> Address</span>
                   <SInput type="text" onChange={handleChange} value={teacherInfo.address} name="address" required />

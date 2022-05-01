@@ -14,7 +14,7 @@ const ViewEvent = ({ id }) => {
    useEffect(() => {
       setEventInfo(" ");
 
-      Axios.get(`http://sms.test/api/admin/getEvent/${id}`, {
+      Axios.get(`http://sms.test/api/getEvent/${id}`, {
          headers: {
             Authorization: `bearer ${access_token}`,
          },

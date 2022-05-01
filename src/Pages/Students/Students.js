@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { React, useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import Header from "../../Components/Header/Header";
 import SearchBox from "../Admin/SearchBox";
 import { FilterContainer, Select, SearchInput } from "../TeacherStudent.element";

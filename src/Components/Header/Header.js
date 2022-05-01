@@ -9,10 +9,6 @@ const Header = ({ title, show }) => {
       if (title === "Students") {
          return (
             <ActionButtonContainer>
-               <ActionLink>
-                  
-                     <span><i>&darr;</i></span>
-               </ActionLink>
                <ActionButton
                   onClick={() => {
                      show();
@@ -46,9 +42,6 @@ const Header = ({ title, show }) => {
       } else if (title === "Class Teacher") {
          return (
             <ActionLink>
-                  
-            <span><i>&darr;</i>
-            </span>
       </ActionLink>
          );
       } else if (title === "Reports") {

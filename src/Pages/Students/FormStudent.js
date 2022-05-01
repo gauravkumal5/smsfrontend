@@ -11,7 +11,7 @@ import {
    SInput,
 } from "../TeacherStudent.element";
 import Moment from "moment";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const FormStudent = ({ func, setFilter }) => {
    const access_token = localStorage.getItem("token");
@@ -54,7 +54,7 @@ const FormStudent = ({ func, setFilter }) => {
          });
 
          if (res.data.data === "duplicate") {
-            store.addNotification({
+            Store.addNotification({
                title: "Duplicate",
                message: "Username already exist",
                type: "warning",
@@ -69,7 +69,7 @@ const FormStudent = ({ func, setFilter }) => {
          } else {
             setFilter();
             func();
-            store.addNotification({
+            Store.addNotification({
                title: "Stored",
                message: "Student details are stored",
                type: "success",
@@ -83,7 +83,7 @@ const FormStudent = ({ func, setFilter }) => {
             });
          }
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: "Failed to store student details",
             type: "danger",

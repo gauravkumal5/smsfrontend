@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { FormContainer, FormGroup, SForm, RadioBtn, RadioGroup, Submit, SInput } from "../TeacherStudent.element";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const FormTeacher = ({ func }) => {
    const access_token = localStorage.getItem("token");
@@ -31,7 +31,7 @@ const FormTeacher = ({ func }) => {
          });
 
          if (res.data.data === "duplicate") {
-            store.addNotification({
+            Store.addNotification({
                title: "Duplicate",
                message: "Username must be unique",
                type: "warning",
@@ -45,7 +45,7 @@ const FormTeacher = ({ func }) => {
             });
          } else {
             func();
-            store.addNotification({
+            Store.addNotification({
                title: "Success",
                message: "Teachers details are stored",
                type: "success",
@@ -59,7 +59,7 @@ const FormTeacher = ({ func }) => {
             });
          }
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: "Failed to store teachers details",
             type: "danger",

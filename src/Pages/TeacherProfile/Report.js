@@ -17,7 +17,7 @@ import {
 } from "./TeacherProfile.element";
 import ViewMarksList from "./ViewMarksList";
 
-const Report = ({ id, show }) => {
+const Report = ({ id, show, type }) => {
    const access_token = localStorage.getItem("token");
    const componentRef = useRef();
    const handlePrint = useReactToPrint({
@@ -25,11 +25,20 @@ const Report = ({ id, show }) => {
    });
    const [report, setReport] = useState(null);
    // console.log(report);
+
+   console.log(type);
+   let abs;
+   if(type=="student"){
+      abs="getLatestReport";
+   }
+   else{
+      abs="getReport";
+   }
    useEffect(async () => {
       // setReport("");
 
       axios
-         .get(`http://sms.test/api/getReport/${id}`, {
+         .get(`http://sms.test/api/${abs}/${id}`, {
             headers: {
                Authorization: `bearer ${access_token}`,
             },
@@ -182,7 +191,7 @@ const Report = ({ id, show }) => {
                <ApprovalSection>
                   <tbody>
                      <tr>
-                        <td>faldfljas</td>
+                        <td></td>
                         <td> </td>
                         <td></td>
                         <td></td>

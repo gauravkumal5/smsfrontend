@@ -1,8 +1,36 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Select, SInput } from "../TeacherStudent.element";
 import { AddButton, RemoveButton, SInputNum, SSelect } from "./TeacherProfile.element";
 
 const UpdateMarksList = ({ marks, add, deletes }) => {
+   const access_token = localStorage.getItem("token");
+   const [subjects, setSubjects] = useState({
+      subject: "",
+
+   });
+   useEffect(async () => {
+      setSubjects(subjects);
+      const fetchData = async () => {
+         await axios.get(`http://sms.test/api/getSubjects`, {
+            headers: {
+               Authorization: `bearer ${access_token}`,
+            },
+         }).then((res) => {
+            const result = res.data.data;
+            console.log(result);
+            setSubjects(result);
+         });
+      };
+      fetchData();
+   }, []);
+   const renderOptions = ()=>{
+      return subjects.map((subject,index)=>(
+         <option key={index} value={subject.name}>
+         {subject.name}{" "}
+      </option>
+      ))
+   }
    return marks.map((vals, idx) => {
       let subject_name = `subject_name-${idx}`,
          theory_full = `theory_full-${idx}`,
@@ -28,12 +56,9 @@ const UpdateMarksList = ({ marks, add, deletes }) => {
                      data-id={idx}
                      id={subject_name}
                      defaultValue={vals.subject_name}>
-                     <option value="">Select</option>
-                     <option value="English">English</option>
-                     <option value="Nepali">Nepali</option>
-                     <option value="Math">Math</option>
-                     <option value="Science">Science</option>
-                     <option value="Social">Social</option>
+                        <option value="">Select</option>
+                                         {renderOptions()}
+
                   </Select>
                )}
             </td>

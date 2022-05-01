@@ -6,20 +6,18 @@ import { useParams } from "react-router";
 import { FormContainer, SForm, SInput, FormGroup, Submit, Select } from "../TeacherStudent.element";
 import { TextArea } from "../../Globalstyle";
 import Moment from "moment";
-import { store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 
 const EditEvent = ({ id }) => {
    const access_token = localStorage.getItem("token");
    const [eventInfo, setEventInfo] = useState({
       title: "",
-      eventType: "",
       startEventDate: "",
       endEventDate: "",
       eventDescription: "",
    });
    const [eventInfos, setEventInfos] = useState({
       title: " ",
-      eventType: " ",
       startEventDate: " ",
       endEventDate: " ",
       eventDescription: " ",
@@ -29,7 +27,7 @@ const EditEvent = ({ id }) => {
 
    useEffect(async () => {
       setEventInfo(eventInfos);
-      Axios.get(`http://sms.test/api/admin/getEvent/${id}`, {
+      Axios.get(`http://sms.test/api/getEvent/${id}`, {
          headers: {
             Authorization: `bearer ${access_token}`,
          },
@@ -49,7 +47,7 @@ const EditEvent = ({ id }) => {
             },
          });
 
-         store.addNotification({
+         Store.addNotification({
             title: "Updated",
             message: " Details are updated",
             type: "success",
@@ -62,7 +60,7 @@ const EditEvent = ({ id }) => {
             },
          });
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: "Failed to update  details",
             type: "danger",
@@ -89,16 +87,6 @@ const EditEvent = ({ id }) => {
                <FormGroup>
                   <span> Event Title</span>
                   <SInput type="text" name="title" value={eventInfo.title} onChange={handleChange} required />
-               </FormGroup>
-               <FormGroup>
-                  <div>
-                     <span> Event Type</span>
-                  </div>
-                  <Select name="eventType" value={eventInfo.eventType} onChange={handleChange} required>
-                     <option value="">Select</option>
-                     <option value="Notice">Notice</option>
-                     <option value="Interactive">Interactive</option>
-                  </Select>
                </FormGroup>
                <FormGroup>
                   <span> Event Start Date</span>

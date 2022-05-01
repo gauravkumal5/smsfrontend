@@ -7,11 +7,11 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 import { Store } from "react-notifications-component";
 import { Clear, DialogBox, ModalContainer, StyledModal } from "../../App.element";
-import AdminProfileEdit from "../Admin/AdminProfileEdit";
-import TeacherProfileEdit from "./TeacherProfileEdit";
+import TeacherProfileEdit from "../TeacherProfile/TeacherProfileEdit";
+import StudentProfileEdit from "./StudentProfileEdit";
 
 
-const TopBar = () => {
+const STTopBar = () => {
    let history = useHistory();
    const [showModal, setShowModal] = useState(false);
    const [opTitle, setOpTitle] = useState("");
@@ -19,7 +19,7 @@ const TopBar = () => {
    const logout = (e) => {
       try {
          localStorage.clear();
-         history.push("/login");
+         history.push("/");
          Store.addNotification({
             title: "Logout",
             message: ` Logged out successfully`,
@@ -57,7 +57,7 @@ const TopBar = () => {
                      <h1>Update Teacher Details</h1>
                      <ClearIcon style={{ fontSize: "3rem" }} onClick={show} />
                   </Clear>
-                  <TeacherProfileEdit />
+                  <StudentProfileEdit />
                </ModalContainer>
             </StyledModal>
          );
@@ -90,11 +90,9 @@ const TopBar = () => {
 
    return (
       <TopbarContainer>
-         <div>
-            <h1>
-               JNM
-            </h1>
-         </div>
+          <div>
+              <h1>JNM</h1>
+          </div>
       <div>
          <button
             style={{ backgroundColor: "inherit" }}
@@ -118,4 +116,4 @@ const TopBar = () => {
    );
 };
 
-export default TopBar;
+export default STTopBar;

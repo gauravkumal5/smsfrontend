@@ -13,8 +13,9 @@ import {
 } from "../TeacherStudent.element";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
-import { store } from "react-notifications-component";
 import { DialogBox, StyledModal } from "../../App.element";
+import { Store } from "react-notifications-component";
+
 // Alternate way to use classes without prefix like `animated fadeIn`
 
 const Subjects = () => {
@@ -33,12 +34,13 @@ const Subjects = () => {
       try {
          const res = await axios.post(`http://sms.test/api/admin/addSubject`, subject, {
             headers: {
-               Authorization: `bearer ${access_token}`,
+               Authorization: `Bearer ${access_token}`,
             },
          });
 
+         console.log(res);
          fetchSubject();
-         store.addNotification({
+         Store.addNotification({
             title: "Stored",
             message: "Subject stored successfully",
             type: "success",
@@ -51,7 +53,7 @@ const Subjects = () => {
             },
          });
       } catch {
-         store.addNotification({
+         Store.addNotification({
             title: "Failed",
             message: "Failed to add a subject",
             type: "danger",
@@ -75,7 +77,7 @@ const Subjects = () => {
    //Get Subjects
    const fetchSubject = async () => {
       await axios
-         .get(`http://sms.test/api/admin/getSubjects`, {
+         .get(`http://sms.test/api/getSubjects`, {
             headers: {
                Authorization: `bearer ${access_token}`,
             },
@@ -108,7 +110,7 @@ const Subjects = () => {
             },
          })
          .then((res) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Deleted",
                message: ` Details deleted successfully`,
                type: "danger",
@@ -122,7 +124,7 @@ const Subjects = () => {
             });
          })
          .catch((err) => {
-            store.addNotification({
+            Store.addNotification({
                title: "Failed",
                message: `Failed  to delete`,
                type: "danger",

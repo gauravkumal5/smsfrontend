@@ -10,20 +10,22 @@ import UserPrivateRoute from "./Components/utils/UserPrivateRoute";
 import StudentProfile from "./Pages/StudentProfile/StudentProfile";
 import TeacherProfile from "./Pages/TeacherProfile/TeacherProfile";
 import TeacherPrivateRoute from "./Components/utils/TeacherPrivateRoute";
-import ReactNotification from "react-notifications-component";
+import {ReactNotifications} from "react-notifications-component";
 import "animate.css/animate.min.css";
 import "react-notifications-component/dist/theme.css";
 import Modal from "./Components/Modal";
+import WSHome from "./Pages/Home/WSHome";
 
 const App = () => {
    return (
       <>
-         <ReactNotification />
+         <ReactNotifications />
          <GlobalStyle />
          <Router>
             <Switch>
+               <Route path="/" exact={true} component={WSHome} />
                <Route path="/login" exact={true} component={Login} />
-               <Route path="/" exact={true} component={StudentLogin} />
+               <Route path="/studentlogin" exact={true} component={StudentLogin} />
                <PrivateRoute path="/dashboard" component={AppContainer} />
                <UserPrivateRoute path="/student" component={StudentProfile} />
                <TeacherPrivateRoute path="/teacher" component={TeacherProfile} />
